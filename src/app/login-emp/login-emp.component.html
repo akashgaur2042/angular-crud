@@ -1,0 +1,61 @@
+<div class="container" style="text-align:center">
+
+    <div>
+        <img src="../assets/download.png" width="100" height="100" class="logo">
+
+    </div>
+
+    <br />
+
+<div class="heading">
+    <h2>ADMIN LOGIN </h2>
+
+    </div>
+    <br /><br />
+
+    <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+
+
+
+            <label class="cred">Username:</label> 
+            <input type="text" [(ngModel)]="username" formControlName="username"
+                placeholder="enter username...">
+        </div>
+
+        <div *ngIf="angForm.controls['username'].invalid && (angForm.controls['username'].dirty || angForm.controls['username'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="angForm.controls['username'].errors.required">
+                Username is required.
+            </div>
+        </div>
+
+    </form>
+
+    <br />
+
+
+    <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+            <label class="cred"> Password:</label> <input type="password" formControlName="password"
+                [(ngModel)]="password" placeholder="enter password...">
+        </div>
+        <div *ngIf="angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="angForm.controls['password'].errors.required">
+                Password is required.
+            </div>
+        </div>
+
+    </form>
+    <br />
+
+    <!-- <button class="verify"  class="verify" (click)="login()"   >
+        <span *ngIf="myFlag" ></span>
+        VERIFY</button> -->
+
+    <button class="login" (click)="login() ">LOGIN</button>
+
+
+
+</div>

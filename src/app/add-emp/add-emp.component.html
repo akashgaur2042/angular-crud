@@ -1,0 +1,44 @@
+<div class="col-md-6">  
+    <h2 class="text-center">{{empformlabel}}</h2>  
+
+    <button class="btn btn-success" routerLink="/list-emp">Back</button><br/><br/>
+    <form [formGroup]="addForm"  class="form " novalidate>
+      
+      
+      <div class="form-group">  
+        <label for="empId">Employee Id:</label>  
+        <input type="string" formControlName="id" placeholder="Id" name="empId" class="form-control" id="empId">  
+        <div class="alert  alert-danger" *ngIf="addForm.get('id').hasError('required') && addForm.get('id').touched">  
+          Employee ID is required  
+        </div> 
+      </div>  
+    
+      <div class="form-group">  
+        <label for="empName">Employee Name:</label>  
+        <input type="text" formControlName="employee_name" placeholder="Employee Name" name="empName" class="form-control" id="empName">  
+        <div class="alert  alert-danger" *ngIf="addForm.get('employee_name').hasError('required') && addForm.get('employee_name').touched">  
+          Employee Name is required  
+        </div> 
+      </div>  
+    
+      <div class="form-group">  
+        <label for="empSalary">Employee Salary:</label>  
+        <input type="text" formControlName="employee_salary" placeholder="Employee Salary" name="employee_salary" class="form-control" id="employee_salary">  
+        <div class="alert  alert-danger" *ngIf=" addForm.get('employee_salary').hasError('maxlength') || addForm.get('employee_salary').hasError('required') && addForm.get('employee_salary').touched">  
+          Employee Salary is required and should less than 9 characters.  
+        </div> 
+      </div>  
+    
+      <div class="form-group">  
+        <label for="empLeave">Employee Leave:</label>  
+        <input type="text" formControlName="employee_leave" placeholder="Employee Leave" name="empLeave" class="form-control" id="empLeave">  
+        <div class="alert  alert-danger" *ngIf=" addForm.get('employee_leave').hasError('maxlength') || addForm.get('employee_leave').hasError('required') && addForm.get('employee_leave').touched">  
+          Leaves are required and should less than 3 characters.  
+        </div>
+      </div>  
+      <button  class="btn btn-success"  *ngIf="btnvisibility" (click)="onSubmit()">Save</button>  
+      <button class="btn btn-success"  *ngIf="!btnvisibility" (click)="onUpdate()">Update</button>  
+    
+      <p>Form value: {{ this.addForm.value | json }}</p>  
+    </form>  
+  </div>  
